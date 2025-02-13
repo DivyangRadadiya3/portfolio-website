@@ -1,6 +1,6 @@
 import React from "react";
-import { HashLink } from "react-router-hash-link";
-import { AiOutlineSun, AiOutlineMoon } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
+import { AiOutlineSun, AiOutlineMoon, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const ThemeToggle = ({ isDarkMode, toggleDarkMode }) => {
   return (
@@ -19,31 +19,16 @@ const ThemeToggle = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
-const MobileMenuToggle = ({ isOpen, setIsOpen }) => {
+const MobileMenuToggle = ({ isOpen, setIsOpen, isDarkMode, toggleDarkMode }) => {
   return (
     <div className="md:hidden flex items-center gap-2">
-      <ThemeToggle />
+      <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <button
-        className="p-2"
+        className="p-2 text-slate-900 dark:text-slate-100"
         aria-label="Toggle menu"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-menu h-6 w-6"
-        >
-          <line x1="4" x2="20" y1="12" y2="12"></line>
-          <line x1="4" x2="20" y1="6" y2="6"></line>
-          <line x1="4" x2="20" y1="18" y2="18"></line>
-        </svg>
+        {isOpen ? <AiOutlineClose className="h-6 w-6" /> : <AiOutlineMenu className="h-6 w-6" />}
       </button>
     </div>
   );
@@ -65,89 +50,33 @@ const Navbar = () => {
     setIsDarkMode((prev) => !prev);
   }, []);
 
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50  bg-transparent  backdrop-blur-xl shadow-sm dark:shadow-slate-900">
-      <div className="max-w-7xl bg-opacity-80 mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-xl shadow-sm dark:shadow-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <HashLink
-            to="#"
-            className="text-2xl font-bold  text-purple-600 dark:text-purple-400"
+          <NavLink
+            to="/"
+            className="text-2xl font-bold text-purple-600 dark:text-purple-400"
           >
             Divyang Radadiya
-          </HashLink>
+          </NavLink>
           <nav className="hidden md:flex items-center gap-6 dark:text-white">
-            <HashLink
-              to="#about"
-              className="text-muted-foreground hover:text-primary dark:hover:text-green-300 transition-colors"
-            >
-              About
-            </HashLink>
-            <HashLink
-              to="#projects"
-              className="text-muted-foreground hover:text-primary dark:hover:text-green-300 transition-colors"
-            >
-              Projects
-            </HashLink>
-            <HashLink
-              to="#contact"
-              className="text-muted-foreground hover:text-primary dark:hover:text-green-300 transition-colors"
-            >
-              Contact
-            </HashLink>
-            <ThemeToggle
-              isDarkMode={isDarkMode}
-              toggleDarkMode={toggleDarkMode}
-            />
+            <NavLink to="/about" className="relative hover:text-green-600 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">About</NavLink>
+            <NavLink to="/projects" className="relative hover:text-green-600 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Projects</NavLink>
+            <NavLink to="/contact" className="relative hover:text-green-600 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Contact</NavLink>
+            <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
           </nav>
-          <MobileMenuToggle isOpen={isOpen} setIsOpen={setIsOpen} />
+          <MobileMenuToggle isOpen={isOpen} setIsOpen={setIsOpen} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         </div>
       </div>
-      {isOpen && (
-        <nav className="absolute top-full left-0 right-0 bg-gray-100 dark:bg-gray-900  backdrop-blur-xl bg-opacity-80 border-b animate-fade-in-up ">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center gap-6 p-4">
-              <HashLink
-                to="#about"
-                className="text-muted-foreground hover:text-primary transition-colors hover:text-green-600 w-full"
-                onClick={(e) => {
-                  setIsOpen(false);
-                }}
-              >
-                About
-              </HashLink>
-              <HashLink
-                to="#projects"
-                className="text-muted-foreground hover:text-primary transition-colors hover:text-green-600 w-full"
-                onClick={(e) => {
-                  setIsOpen(false);
-                }}
-              >
-                Projects
-              </HashLink>
-              <HashLink
-                to="#contact"
-                className="text-muted-foreground hover:text-primary transition-colors hover:text-green-600 w-full"
-                onClick={(e) => {
-                  setIsOpen(false);
-                }}
-              >
-                Contact
-              </HashLink>
-            </div>
-          </div>
-        </nav>
-      )}
+
+      <div className={`absolute top-full left-0 right-0 bg-white/90 dark:bg-black/90 border-b transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}>
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6 py-4">  
+          <NavLink to="/about" className="relative w-full text-center py-2 hover:text-green-700 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full dark:text-white dark:hover:text-green-300" onClick={() => setIsOpen(false)}>About</NavLink>
+          <NavLink to="/projects" className="relative w-full text-center py-2 hover:text-green-700 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full dark:text-white dark:hover:text-green-300" onClick={() => setIsOpen(false)}>Projects</NavLink>
+          <NavLink to="/contact" className="relative w-full text-center py-2 hover:text-green-700 transition-all duration-300 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full dark:text-white dark:hover:text-green-300" onClick={() => setIsOpen(false)}>Contact</NavLink>
+        </div>
+      </div>
     </header>
   );
 };

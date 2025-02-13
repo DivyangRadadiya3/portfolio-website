@@ -207,7 +207,7 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-muted/50 dark:bg-gray-900">
       <div className="container mx-auto px-4 space-y-20">
-        <artical>
+        <div>
           <h2 className="text-4xl font-bold text-center text-purple-600 dark:text-purple-400 mb-8">
             About Me
           </h2>
@@ -220,14 +220,15 @@ const About = () => {
             version control using Git, I bring ideas to life through clean,
             efficient, and maintainable code.
           </p>
-        </artical>
+        </div>
         <div className="text-center">
-          <a
-            href="#"
+          <button
+            // href="path/to/your/resume.pdf"
+            // target="_black"
             className="px-6 py-3 border border-purple-600 text-purple-600 hover:text-black dark:hover:text-white  rounded-md "
           >
             Download Resume
-          </a>
+          </button>
         </div>
         <TechnicalSkills />
         <WorkExperience />

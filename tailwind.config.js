@@ -31,10 +31,25 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+        "border-expand": {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeOut: {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(20px)" },
+        },
       },
       animation: {
         "fade-in-up": "fadeInUp 0.60s ease-out forwards",
         "slide-down": "slideDown 0.5s ease-out",
+        "border-expand": "border-expand 0.5s ease-in-out forwards",
+        "fade-in": "fadeIn 0.60s ease-in-out forwards",
+        "fade-out": "fadeOut 0.60s ease-in-out forwards",
       },
     },
   },
