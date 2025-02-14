@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -43,6 +44,28 @@ module.exports = {
           "0%": { opacity: "1", transform: "translateY(0)" },
           "100%": { opacity: "0", transform: "translateY(20px)" },
         },
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+        montserrat: ["Segoe UI", "sans-serif"],
+        display: [
+          "Nunito",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+       
       },
       animation: {
         "fade-in-up": "fadeInUp 0.60s ease-out forwards",

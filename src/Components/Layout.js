@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import React, { memo } from "react";
 import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
+import Loader from "./Loader";
 
 const Layout = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    // Start fade-out animation
-    setIsVisible(false);
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 300); // Match this duration with your fade-out duration
-
-    return () => clearTimeout(timer);
-  }, [isVisible]);
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className={` transition-opacity duration-300 ${isVisible ? 'animate-fade-in' : 'animate-fade-out'}`}>
+    <div className="min-h-screen flex flex-col">
+    <Navbar />
+  
+    <div className="flex-1 flex justify-center items-center p-4 sm:p-8">
+      <React.Suspense fallback={<Loader />}>
         <Outlet />
-      </div>
+      </React.Suspense>
     </div>
+  </div>
+  
   );
 };
 
-export default Layout;
+export default memo(Layout);

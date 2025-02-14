@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaJsSquare,
   FaReact,
@@ -8,228 +7,212 @@ import {
 } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
 
+const Card = ({ title, description, icon }) => (
+  <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+    {icon && <div className="flex justify-center mb-4">{icon}</div>}
+    <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+      {title}
+    </h4>
+    {description && (
+      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+    )}
+  </div>
+);
+
+const Section = ({ title, children }) => (
+  <div className="text-center mb-12">
+    <h3 className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-6 font-mono">
+      {title}
+    </h3>
+    {children}
+  </div>
+);
+
 const TechnicalSkills = () => {
+  const skills = [
+    {
+      name: "JavaScript",
+      icon: <FaJsSquare className="text-6xl text-yellow-500" />,
+    },
+    {
+      name: "React",
+      icon: <FaReact className="text-6xl text-blue-500" />,
+    },
+    {
+      name: "Tailwind CSS",
+      icon: <SiTailwindcss className="text-6xl text-teal-500" />,
+    },
+    {
+      name: "Node.js",
+      icon: <FaNodeJs className="text-6xl text-green-500" />,
+    },
+    {
+      name: "Git",
+      icon: <FaGitAlt className="text-6xl text-orange-500" />,
+    },
+    {
+      name: "HTML & CSS",
+      icon: <FaCode className="text-6xl text-indigo-500" />,
+    },
+  ];
+
   return (
-    <div className="text-center">
-      <h3 className="text-3xl font-bold text-center text-purple-600 dark:text-purple-400 mb-4">
-        Technical Skills
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-        {[
-          {
-            name: "JavaScript",
-            icon: <FaJsSquare className="text-6xl text-yellow-500" />,
-            description: "Dynamic programming language for web development.",
-          },
-          {
-            name: "React",
-            icon: <FaReact className="text-6xl text-blue-500" />,
-            description: "A JavaScript library for building user interfaces.",
-          },
-          {
-            name: "Tailwind CSS",
-            icon: <SiTailwindcss className="text-6xl text-teal-500" />,
-            description:
-              "Utility-first CSS framework for rapid UI development.",
-          },
-          {
-            name: "Node.js",
-            icon: <FaNodeJs className="text-6xl text-green-500" />,
-            description:
-              "JavaScript runtime for building server-side applications.",
-          },
-          {
-            name: "Git",
-            icon: <FaGitAlt className="text-6xl text-orange-500" />,
-            description: "Version control system for tracking changes in code.",
-          },
-          {
-            name: "HTML & CSS",
-            icon: <FaCode className="text-6xl text-indigo-500" />,
-            description: "The building blocks of web development.",
-          },
-        ].map((skill, index) => (
-          <div
-            key={index}
-            className="relative mb-8 flex flex-col rounded-2xl border border-blue-300 bg-white p-8 shadow-lg dark:border-gray-600 dark:bg-gray-800 lg:mb-4 transform transition duration-500 hover:scale-110"
-          >
-            <div className="flex justify-center mb-4">{skill.icon}</div>
-            <p className="mb-4 text-xl font-semibold text-blue-900 dark:text-white">
-              {skill.name}
-            </p>
-            <p className="text-blue-700 dark:text-gray-300">
-              {skill.description}
-            </p>
-          </div>
+    <Section title="Technical Skills">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {skills.map((skill, index) => (
+          <Card key={index} title={skill.name} icon={skill.icon} />
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
 const WorkExperience = () => {
+  const experiences = [
+    {
+      title: "Junior React Developer",
+      company: "HK DigiVerse & IT Consultancy",
+      duration: "3 months",
+      points: [
+        "Worked on product-based applications, focusing on scalable and user-centric designs.",
+        "Designed and developed core features to improve functionality and usability.",
+        "Collaborated with the product team to define requirements and deliver timely solutions.",
+      ],
+    },
+    {
+      title: "Web Developer Intern",
+      company: "CodexByte",
+      duration: "6 months",
+      points: [
+        "Worked on web application projects using React.js and Tailwind CSS.",
+        "Improved application performance through optimization techniques.",
+        "Participated in code reviews and collaborated with team members to ensure high-quality code.",
+      ],
+    },
+  ];
+
   return (
-    <div className="">
-      <h3 className="text-3xl font-bold text-center text-purple-600 dark:text-purple-400 mb-4">
-        Work Experience
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-        {[
-          {
-            title: "Senior Full Stack Developer",
-            company: "Tech Solutions Inc.",
-            duration: "2020 - Present",
-            points: [
-              "Led development of enterprise-scale React applications",
-              "Implemented CI/CD pipelines reducing deployment time by 40%",
-              "Mentored junior developers and conducted code reviews",
-            ],
-          },
-          {
-            title: "Full Stack Developer",
-            company: "Digital Innovations Ltd",
-            duration: "2018 - 2020",
-            points: [
-              "Built and maintained multiple client-facing web applications",
-              "Developed RESTful APIs using Node.js and Express",
-              "Optimized database queries improving performance by 30%",
-            ],
-          },
-        ].map((experience, index) => (
+    <Section title="Work Experience">
+      <div className="flex flex-col md:flex-row gap-6">
+        {experiences.map((exp, index) => (
           <div
             key={index}
-            className="card text-left bg-white dark:bg-gray-700 hover:border hover:border-green-700 dark:hover:border dark:hover:border-green-500 p-6 rounded-lg shadow-lg ring-1 ring-black/10 transform transition duration-500 hover:scale-105"
+            className="flex-1 bg-white dark:bg-gray-800 p-6 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg transform transition duration-300 hover:scale-105"
           >
-            <h4 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
-              {experience.title}
+            <h4 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              {exp.title}
             </h4>
-            <p className="text-gray-600 dark:text-gray-300 mb-2">
-              {experience.company}
+            <p className="text-gray-600 dark:text-gray-300">
+              {exp.company} | {exp.duration}
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              {experience.duration}
-            </p>
-            <ul className="list-disc list-inside text-gray-600 dark:text-gray-300">
-              {experience.points.map((point, index) => (
-                <li key={index}>{point}</li>
+            <ul className="list-disc text-left text-gray-600 dark:text-gray-300 mt-3 px-2">
+              {exp.points.map((point, idx) => (
+                <li key={idx}>{point}</li>
               ))}
             </ul>
           </div>
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
 const AdditionalSkills = () => {
+  const skills = [
+    {
+      title: "Problem Solving",
+      description:
+        "Strong analytical skills in debugging and optimizing applications. Implementing efficient algorithms and data structures.",
+    },
+    {
+      title: "Modern Technologies",
+      description:
+        "Staying updated with modern frameworks, best practices, and cloud technologies for efficient development.",
+    },
+    {
+      title: "Version Control",
+      description:
+        "Proficient in using Git for version control, enabling collaboration and maintaining code integrity across projects.",
+    },
+    {
+      title: "Responsive Design",
+      description:
+        "Skilled in creating responsive and user-friendly interfaces using CSS frameworks like Tailwind CSS and Bootstrap.",
+    },
+  ];
+
   return (
-    <div className="text-center">
-      <h3 className="text-3xl font-bold text-center text-purple-600 dark:text-purple-400 mb-4">
-        Additional Skills
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-        {[
-          {
-            title: "Problem Solving",
-            description:
-              "Strong analytical skills in debugging and optimizing applications. Experienced in implementing efficient algorithms and data structures to solve complex technical challenges.",
-          },
-          {
-            title: "Modern Technologies",
-            description:
-              "Staying current with the latest web technologies and best practices. Expert in modern frameworks and tools for efficient development.",
-          },
-        ].map((skill, index) => (
-          <div
+    <Section title="Additional Skills">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {skills.map((skill, index) => (
+          <Card
             key={index}
-            className="card bg-white dark:bg-gray-700 hover:border hover:border-green-700 dark:hover:border dark:hover:border-green-500 p-6 rounded-lg shadow-lg ring-1 ring-black/10 transform transition duration-500 hover:scale-105"
-          >
-            <h4 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
-              {skill.title}
-            </h4>
-            <p className="text-gray-600 dark:text-gray-300">
-              {skill.description}
-            </p>
-          </div>
+            title={skill.title}
+            description={skill.description}
+          />
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
 const Education = () => {
+  const education = [
+    {
+      title: "Bachelor of Computer Application",
+      university: "S.V.Patel College",
+      duration: "2018 - 2022",
+      description:
+        "Specialized in Software Engineering with a focus on web technologies and distributed systems. Graduated with honors.",
+    },
+    {
+      title: "Full Stack Development Certification",
+      university: "Tech Academy",
+      duration: "2022",
+      description:
+        "Intensive program covering modern web development stack including React, Node.js, and cloud technologies.",
+    },
+  ];
+
   return (
-    <div className="text-center">
-      <h3 className="text-3xl font-bold text-center text-purple-600 dark:text-purple-400 mb-4">
-        Education
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-        {[
-          {
-            title: "Bachelor of Computer Science",
-            university: "University Name",
-            duration: "2018 - 2022",
-            description:
-              "Specialized in Software Engineering with focus on web technologies and distributed systems. Graduated with honors.",
-          },
-          {
-            title: "Full Stack Development Certification",
-            university: " Tech Academy",
-            duration: "2022",
-            description:
-              "Intensive program covering modern web development stack including React, Node.js, and cloud technologies.",
-          },
-        ].map((education, index) => (
-          <div
+    <Section title="Education">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {education.map((edu, index) => (
+          <Card
             key={index}
-            className="card bg-white dark:bg-gray-700 hover:border hover:border-green-700 dark:hover:border dark:hover:border-green-500 p-6 rounded-lg shadow-lg ring-1 ring-black/10 transform transition duration-500 hover:scale-105"
-          >
-            <h4 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
-              {education.title}
-            </h4>
-            <p className="text-gray-600 dark:text-gray-300 mb-2">
-              {education.university}
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              {education.duration}
-            </p>
-            <p className="text-gray-600 dark:text-gray-300">
-              {education.description}
-            </p>
-          </div>
+            title={edu.title}
+            description={
+              <>
+                <p className="font-semibold">{edu.university}</p>
+                <p className="text-gray-500 mb-2">Year : {edu.duration}</p>
+                <p className="text-gray-500 text-left">{edu.description}</p>
+              </>
+            }
+          />
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
 const About = () => {
   return (
     <section id="about" className="py-24 bg-muted/50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 space-y-20">
-        <div>
-          <h2 className="text-4xl font-bold text-center text-purple-600 dark:text-purple-400 mb-8">
-            About Me
-          </h2>
-          <p className="text-gray-600 dark:text-gray-200 text-lg text-left  max-w-3xl mx-auto mb-8">
-            I'm a passionate ReactJs developer with expertise in modern web
-            technologies. My core strengths lie in JavaScript development,
-            building responsive interfaces with React, crafting beautiful UI
-            with Tailwind CSS, and developing robust backend solutions with
-            Node.js. With strong proficiency in HTML & CSS fundamentals and
-            version control using Git, I bring ideas to life through clean,
-            efficient, and maintainable code.
+      <div className="container mx-auto space-y-16">
+        <Section title="About Me">
+          <p className="text-gray-600 dark:text-gray-200 text-lg max-w-3xl mx-auto">
+            I'm a passionate React developer with expertise in modern web
+            technologies. My strengths lie in JavaScript, building responsive
+            interfaces with React, styling with Tailwind CSS, and developing
+            robust backend solutions with Node.js. I prioritize clean,
+            maintainable, and efficient code.
           </p>
-        </div>
-        <div className="text-center">
-          <button
-            // href="path/to/your/resume.pdf"
-            // target="_black"
-            className="px-6 py-3 border border-purple-600 text-purple-600 hover:text-black dark:hover:text-white  rounded-md "
-          >
-            Download Resume
-          </button>
-        </div>
+          <div className="mt-6">
+            <button className="px-6 py-3 border border-purple-600 text-purple-600 hover:text-black dark:hover:text-white rounded-md">
+              Download Resume
+            </button>
+          </div>
+        </Section>
         <TechnicalSkills />
         <WorkExperience />
         <AdditionalSkills />

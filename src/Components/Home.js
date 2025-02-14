@@ -1,36 +1,47 @@
-import React from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
+  const [mounted, setMounted] = useState(false);
+
+  const handleMount = useCallback(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    handleMount();
+  }, [handleMount]);
+
+  if (!mounted) return null;
+
   return (
-    <section className="relative px-6 lg:px-8 py-24 lg:py-32 h-screen  dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl opacity-100 translate-x-0 translate-y-0">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-purple-600 to-purple-900 bg-clip-text text-purple-600 dark:text-purple-400">
-            Hi, I'm Divyang Radadiya
-          </h1>
-          <p className="mt-6 text-lg leading-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-200">
-            A passionate ReactJs developer specializing in building exceptional
-            digital experiences.
-          </p>
-          <div className="mt-8 space-x-4">
-            <NavLink
-              to="projects"
-              className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-300 hover:border hover:border-green-600 dark:hover:bg-gray-700"
-            >
-              View Projects
-            </NavLink>
-            <NavLink
-              to="contact"
-              className="px-6 py-3 bg-purple-600 dark:bg-purple-500 text-white rounded-md hover:bg-purple-700 dark:hover:bg-purple-600"
-            >
-              Contact Me
-            </NavLink>
-          </div>
+    <section className="min-h-screen py-24 dark:bg-gray-900 ">
+      <div className="text-center container mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight font-bold bg-gradient-to-r from-yellow-400 to-green-400 text-wrap text-transparent bg-clip-text whitespace-nowrap leading-snug md:leading-normal lg:leading-relaxed font-mono">
+          Hi I'm Divyang Radadiya
+        </h1>
+
+        <p className="mt-5 text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+          A passionate React developer focused on creating high-performance web
+          applications.
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-col md:flex-row justify-center gap-5">
+          <NavLink
+            to="/projects"
+            className="px-6 py-3 border border-gray-400 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-300 hover:border-green-600 hover:text-green-600 dark:hover:bg-gray-700 transition-all "
+          >
+            View Projects
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-all "
+          >
+            Contact Me
+          </NavLink>
         </div>
       </div>
     </section>
   );
 };
 
-export default Home;
+export default memo(Home);
