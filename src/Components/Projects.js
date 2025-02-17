@@ -68,7 +68,7 @@ const Projects = memo(() => {
         <h3 className="text-3xl font-bold my-5 font-mono text-center text-purple-600 dark:text-purple-400">
           My Projects
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8  px-6 md:px-0">
           {projectData.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}

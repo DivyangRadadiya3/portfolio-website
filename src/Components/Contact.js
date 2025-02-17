@@ -39,7 +39,7 @@ const ContactForm = React.memo(() => {
 
   return (
     <section id="contact" className="py-16 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 ">
         <h2 className="text-center text-4xl my-5 font-mono font-bold text-purple-600 dark:text-purple-400">
           Contact
         </h2>
@@ -125,36 +125,36 @@ const ContactForm = React.memo(() => {
       </div>
       <hr className="my-4 mx-6  border-t border-gray-300" />
 
-      <div className="mx-auto flex items-center justify-center space-x-4">
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+      <div className="mx-auto flex flex-wrap items-center justify-center gap-3 space-x-4 md:space-x-6 lg:space-x-8">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
           <div className="flex p-2 items-center justify-center rounded-full bg-blue-500 text-gray-300">
             <FaFacebook className="w-5 h-5" />
           </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-500">
+          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-500 text-sm sm:text-base md:text-lg lg:text-xl">
             Facebook
           </p>
         </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
           <div className="flex p-2 items-center justify-center rounded-full bg-blue-400 text-gray-300">
             <FaTwitter className="w-5 h-5" />
           </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-400">
+          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-400 text-sm sm:text-base md:text-lg lg:text-xl">
             Twitter
           </p>
         </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
           <div className="flex p-2 items-center justify-center rounded-full bg-red-600 text-gray-300">
             <FaInstagram className="w-5 h-5" />
           </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-red-600">
+          <p className="text-gray-600 dark:text-gray-200 hover:text-red-600 text-sm sm:text-base md:text-lg lg:text-xl">
             Instagram
           </p>
         </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
           <div className="flex p-2 items-center justify-center rounded-full bg-red-500 text-gray-300">
             <FaLinkedin className="w-5 h-5" />
           </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-red-500">
+          <p className="text-gray-600 dark:text-gray-200 hover:text-red-500 text-sm sm:text-base md:text-lg lg:text-xl">
             LinkedIn
           </p>
         </div>

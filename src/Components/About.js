@@ -220,7 +220,7 @@ const Education = () => {
 const About = () => {
   return (
     <section id="about" className="py-24 bg-muted/50 dark:bg-gray-900">
-      <div className="container mx-auto  space-y-16">
+      <div className="container mx-auto px-6 md:px-0 space-y-16">
         <AboutSection />
         <TechnicalSkills />
         <WorkExperience />
