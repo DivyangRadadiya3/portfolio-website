@@ -3,8 +3,9 @@ import {
   FaReact,
   FaNodeJs,
   FaGitAlt,
-  FaCode,
+  FaCode
 } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
 import { SiTailwindcss } from "react-icons/si";
 
 const Card = ({ title, description, icon }) => (
@@ -14,17 +15,41 @@ const Card = ({ title, description, icon }) => (
       {title}
     </h4>
     {description && (
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      <div className="text-gray-600 dark:text-gray-300">{description}</div>
     )}
   </div>
 );
 
 const Section = ({ title, children }) => (
   <div className="text-center mb-12">
-    <h3 className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-6 font-mono">
+    <h3 className="text-4xl font-bold text-purple-600 tracking-wide dark:text-purple-400 mb-6 font-mono">
       {title}
     </h3>
     {children}
+  </div>
+);
+
+const AboutSection = () => (
+  <div className="text-center mx-auto p-6">
+    <h2 className="text-4xl font-bold text-purple-600 tracking-wide">
+      About Me
+    </h2>
+    <p className="text-gray-700 dark:text-gray-200 text-lg max-w-3xl mt-4 mx-auto">
+      I'm a passionate React developer with expertise in modern web
+      technologies. My strengths lie in JavaScript, building responsive
+      interfaces with React, styling with Tailwind CSS, and developing robust
+      backend solutions with Node.js. I prioritize clean, maintainable, and
+      efficient code.
+    </p>
+    <div className="mt-6 flex item-center justify-center mx-auto">
+      <button
+        className="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg flex items-center gap-2 shadow-md hover:bg-purple-700 transition duration-300"
+        onClick={() => window.open("Divyang M. Radadiya.pdf", "_blank")}
+      >
+        <FiDownload className="w-5 h-5" />
+        Download Resume
+      </button>
+    </div>
   </div>
 );
 
@@ -163,20 +188,13 @@ const Education = () => {
       university: "S.V.Patel College",
       duration: "2018 - 2022",
       description:
-        "Specialized in Software Engineering with a focus on web technologies and distributed systems. Graduated with honors.",
-    },
-    {
-      title: "Full Stack Development Certification",
-      university: "Tech Academy",
-      duration: "2022",
-      description:
-        "Intensive program covering modern web development stack including React, Node.js, and cloud technologies.",
+        "Specialized in Frontend developer with a focus on web technologies and distributed systems. Graduated with honors.",
     },
   ];
 
   return (
     <Section title="Education">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="mx-auto max-w-xl">
         {education.map((edu, index) => (
           <Card
             key={index}
@@ -184,8 +202,12 @@ const Education = () => {
             description={
               <>
                 <p className="font-semibold">{edu.university}</p>
-                <p className="text-gray-500 mb-2">Year : {edu.duration}</p>
-                <p className="text-gray-500 text-left">{edu.description}</p>
+                <p className="text-gray-500 dark:text-gray-300 mb-2">
+                  Year : {edu.duration}
+                </p>
+                <p className="text-gray-500 dark:text-gray-300 text-left">
+                  {edu.description}
+                </p>
               </>
             }
           />
@@ -199,20 +221,7 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-muted/50 dark:bg-gray-900">
       <div className="container mx-auto space-y-16">
-        <Section title="About Me">
-          <p className="text-gray-600 dark:text-gray-200 text-lg max-w-3xl mx-auto">
-            I'm a passionate React developer with expertise in modern web
-            technologies. My strengths lie in JavaScript, building responsive
-            interfaces with React, styling with Tailwind CSS, and developing
-            robust backend solutions with Node.js. I prioritize clean,
-            maintainable, and efficient code.
-          </p>
-          <div className="mt-6">
-            <button className="px-6 py-3 border border-purple-600 text-purple-600 hover:text-black dark:hover:text-white rounded-md">
-              Download Resume
-            </button>
-          </div>
-        </Section>
+        <AboutSection />
         <TechnicalSkills />
         <WorkExperience />
         <AdditionalSkills />

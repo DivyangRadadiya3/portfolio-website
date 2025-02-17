@@ -4,12 +4,11 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 const ProjectCard = memo(
   ({ title, description, image, techStack, repoLink, demoLink }) => {
     return (
-    
-      <div className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-md ">
+      <div className="flex flex-col items-center p-4 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg transform transition duration-300  ">
         <img
           src={image}
           alt={title}
-          className="w-full h-[16rem] object-cover rounded-lg"
+          className="w-full h-[16rem] object-cover rounded-lg dark:text-gray-300"
         />
         <h2 className="mt-4 text-lg font-semibold text-gray-800">{title}</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
@@ -23,7 +22,7 @@ const ProjectCard = memo(
             </span>
           ))}
         </div>
-        <div className="mt-2 flex flex-wrap md:flex-nowrap justify-between gap-2">
+        <div className="mt-2 flex flex-wrap md:flex-nowrap justify-between  gap-2">
           <a
             href={repoLink}
             target="_blank"
@@ -49,23 +48,18 @@ const ProjectCard = memo(
 const Projects = memo(() => {
   const projectData = [
     {
-      title: "E-commerce Platform",
-      description:
-        "A full-stack e-commerce platform built with React and Node.js.",
-      image:
-        "https://storage.googleapis.com/a1aa/image/xDjWxUMUz3Du3GJW3X7a345P-reaxPmURhtSGwBk1Rc.jpg",
-      techStack: ["react", "node.js", "mongodb", "express"],
-      repoLink: "https://github.com/your-repo",
-      demoLink: "https://your-live-demo.com",
+      title: "E-Learning Website",
+      description: "An interactive e-learning platform offering a user-friendly interface and multimedia content delivery. It features a course management system, allowing learners to access a variety of courses conveniently, enhancing the educational experience for students of all ages.",
+      image: "https://storage.googleapis.com/a1aa/image/sample-portfolio.jpg",
+      techStack: ["react", "tailwind css"],
     },
     {
       title: "Portfolio Website",
       description: "A modern portfolio website showcasing projects and skills.",
       image: "https://storage.googleapis.com/a1aa/image/sample-portfolio.jpg",
-      techStack: ["react", "tailwind css", "framer motion"],
-      repoLink: "https://github.com/your-portfolio",
-      demoLink: "https://your-portfolio.com",
+      techStack: ["react", "tailwind css"],
     },
+   
   ];
 
   return (

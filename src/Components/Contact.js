@@ -1,7 +1,15 @@
 import React, { useCallback, useMemo } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaPhone,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const ContactForm = React.memo(() => {
   const contactInfo = useMemo(
@@ -113,6 +121,42 @@ const ContactForm = React.memo(() => {
               </Form>
             )}
           </Formik>
+        </div>
+      </div>
+      <hr className="my-4 mx-6  border-t border-gray-300" />
+
+      <div className="mx-auto flex items-center justify-center space-x-4">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+          <div className="flex p-2 items-center justify-center rounded-full bg-blue-500 text-gray-300">
+            <FaFacebook className="w-5 h-5" />
+          </div>
+          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-500">
+            Facebook
+          </p>
+        </div>
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+          <div className="flex p-2 items-center justify-center rounded-full bg-blue-400 text-gray-300">
+            <FaTwitter className="w-5 h-5" />
+          </div>
+          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-400">
+            Twitter
+          </p>
+        </div>
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+          <div className="flex p-2 items-center justify-center rounded-full bg-red-600 text-gray-300">
+            <FaInstagram className="w-5 h-5" />
+          </div>
+          <p className="text-gray-600 dark:text-gray-200 hover:text-red-600">
+            Instagram
+          </p>
+        </div>
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200">
+          <div className="flex p-2 items-center justify-center rounded-full bg-red-500 text-gray-300">
+            <FaLinkedin className="w-5 h-5" />
+          </div>
+          <p className="text-gray-600 dark:text-gray-200 hover:text-red-500">
+            LinkedIn
+          </p>
         </div>
       </div>
     </section>
