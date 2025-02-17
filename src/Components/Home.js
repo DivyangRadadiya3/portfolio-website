@@ -25,16 +25,16 @@ const Home = () => {
           A passionate React developer focused on creating high-performance web
           applications.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-col md:flex-row justify-center gap-5  px-6 md:px-0">
+        <div className="mt-8 flex flex-col sm:flex-col md:flex-row justify-center gap-5 px-6 md:px-0">
           <NavLink
             to="/projects"
-            className="px-6 py-3 border border-gray-400 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-300 hover:border-green-600 hover:text-green-600 dark:hover:bg-gray-700 transition-all "
+            className="px-6 py-3 border border-gray-400 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-300 hover:border-green-600 hover:text-green-600 dark:hover:bg-gray-700 transition-all"
           >
             View Projects
           </NavLink>
           <NavLink
             to="/contact"
-            className="px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-all "
+            className="px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-all"
           >
             Contact Me
           </NavLink>

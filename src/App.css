@@ -33,6 +33,10 @@ html {
   color: #61dafb;
 }
 
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,3 +45,4 @@ html {
     transform: rotate(360deg);
   }
 }
+

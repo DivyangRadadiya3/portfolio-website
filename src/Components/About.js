@@ -118,7 +118,7 @@ const WorkExperience = () => {
 
   return (
     <Section title="Work Experience">
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-6 ">
         {experiences.map((exp, index) => (
           <div
             key={index}

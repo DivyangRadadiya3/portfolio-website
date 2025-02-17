@@ -65,7 +65,6 @@ module.exports = {
           "Noto Color Emoji",
         ],
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
-       
       },
       animation: {
         "fade-in-up": "fadeInUp 0.60s ease-out forwards",
