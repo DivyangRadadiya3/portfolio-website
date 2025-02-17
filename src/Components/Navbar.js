@@ -13,27 +13,39 @@ const ThemeToggle = memo(({ isDarkMode, toggleDarkMode }) => (
     hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-100 dark:hover:text-white"
     onClick={toggleDarkMode}
   >
-    {isDarkMode ? <AiOutlineSun className="h-4 w-4" /> : <AiOutlineMoon className="h-4 w-4" />}
+    {isDarkMode ? (
+      <AiOutlineSun className="h-4 w-4" />
+    ) : (
+      <AiOutlineMoon className="h-4 w-4" />
+    )}
     <span className="sr-only">Toggle theme</span>
   </button>
 ));
 
-const MobileMenuToggle = memo(({ isOpen, setIsOpen, isDarkMode, toggleDarkMode }) => (
-  <div className="md:hidden flex items-center gap-2">
-    <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-    <button
-      className="p-2 text-slate-900 dark:text-slate-100"
-      aria-label="Toggle menu"
-      onClick={() => setIsOpen((prev) => !prev)}
-    >
-      {isOpen ? <AiOutlineClose className="h-6 w-6" /> : <AiOutlineMenu className="h-6 w-6" />}
-    </button>
-  </div>
-));
+const MobileMenuToggle = memo(
+  ({ isOpen, setIsOpen, isDarkMode, toggleDarkMode }) => (
+    <div className="md:hidden flex items-center gap-2">
+      <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <button
+        className="p-2 text-slate-900 dark:text-slate-100"
+        aria-label="Toggle menu"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        {isOpen ? (
+          <AiOutlineClose className="h-6 w-6" />
+        ) : (
+          <AiOutlineMenu className="h-6 w-6" />
+        )}
+      </button>
+    </div>
+  )
+);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => JSON.parse(localStorage.getItem("darkMode")) || false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    () => JSON.parse(localStorage.getItem("darkMode")) || false
+  );
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
@@ -46,9 +58,17 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-xl shadow-sm dark:shadow-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <NavLink to="/" className="text-3xl font-bold text-purple-600 dark:text-purple-400">
-            Divyang Radadiya
-          </NavLink>
+          <div className="flex justify-center items-center ">
+            <NavLink
+              to="/"
+              className="text-xl font-bold text-purple-600 dark:text-purple-400 
+               sm:text-3xl md:text-4xl
+               transition-all duration-300 ease-in-out 
+               hover:text-purple-500 dark:hover:text-purple-300"
+            >
+              Divyang Radadiya
+            </NavLink>
+          </div>
           <nav className="hidden md:flex items-center gap-6 dark:text-white">
             {["about", "projects", "contact"].map((item) => (
               <NavLink
@@ -59,9 +79,17 @@ const Navbar = () => {
                 {item}
               </NavLink>
             ))}
-            <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+            <ThemeToggle
+              isDarkMode={isDarkMode}
+              toggleDarkMode={toggleDarkMode}
+            />
           </nav>
-          <MobileMenuToggle isOpen={isOpen} setIsOpen={setIsOpen} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+          <MobileMenuToggle
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            isDarkMode={isDarkMode}
+            toggleDarkMode={toggleDarkMode}
+          />
         </div>
       </div>
 
