@@ -8,7 +8,7 @@ const Layout = () => {
     <div className="min-h-screen flex flex-col">
     <Navbar />
   
-    <div className="flex-1 flex justify-center items-center p-4 sm:p-8">
+    <div className="flex-1 flex justify-center items-center overflow-none p-4 sm:p-8">
       <React.Suspense fallback={<Loader />}>
         <Outlet />
       </React.Suspense>

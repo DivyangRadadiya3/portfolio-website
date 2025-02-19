@@ -20,6 +20,15 @@ const ContactForm = React.memo(() => {
     ],
     []
   );
+  const socialLink = useMemo(
+    () =>[
+      { icon: FaFacebook, text: "Facebook", hoverColor: "blue-500" },
+      { icon: FaTwitter, text: "Twitter", hoverColor: "blue-400" },
+      { icon: FaInstagram, text: "Instagram", hoverColor: "red-600" },
+      { icon: FaLinkedin, text: "LinkedIn", hoverColor: "blue-500" },
+    ],
+    []
+  );
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2, "Too short!").required("Name is required"),
@@ -126,38 +135,23 @@ const ContactForm = React.memo(() => {
       <hr className="my-4 mx-6  border-t border-gray-300" />
 
       <div className="mx-auto flex flex-wrap items-center justify-center gap-3 space-x-4 md:space-x-6 lg:space-x-8">
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
-          <div className="flex p-2 items-center justify-center rounded-full text-gray-300 hover:text-blue-500">
-            <FaFacebook className="w-5 h-5" />
+        {socialLink.map(({ icon: Icon, text, hoverColor }, index) => (
+          <div
+            key={index}
+            className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8"
+          >
+            <div
+              className={`flex p-2 items-center justify-center rounded-full text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:text-${hoverColor} dark:hover:text-${hoverColor}`}
+            >
+              <Icon className="w-5 h-5" />
+            </div>
+            <p
+              className={`text-gray-600 dark:text-gray-200 hover:text-${hoverColor} dark:hover:text-${hoverColor} text-sm sm:text-base md:text-lg lg:text-xl`}
+            >
+              {text}
+            </p>
           </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-500 text-sm sm:text-base md:text-lg lg:text-xl">
-            Facebook
-          </p>
-        </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
-          <div className="flex p-2 items-center justify-center rounded-full text-gray-300 hover:text-blue-400">
-            <FaTwitter className="w-5 h-5" />
-          </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-blue-400 text-sm sm:text-base md:text-lg lg:text-xl">
-            Twitter
-          </p>
-        </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
-          <div className="flex p-2 items-center justify-center rounded-full text-gray-300 hover:text-red-600">
-            <FaInstagram className="w-5 h-5" />
-          </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-red-600 text-sm sm:text-base md:text-lg lg:text-xl">
-            Instagram
-          </p>
-        </div>
-        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-200 sm:space-x-4 md:space-x-6 lg:space-x-8">
-          <div className="flex p-2 items-center justify-center rounded-full text-gray-300 hover:text-red-500">
-            <FaLinkedin className="w-5 h-5" />
-          </div>
-          <p className="text-gray-600 dark:text-gray-200 hover:text-red-500 text-sm sm:text-base md:text-lg lg:text-xl">
-            LinkedIn
-          </p>
-        </div>
+        ))}
       </div>
     </section>
   );

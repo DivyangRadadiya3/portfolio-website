@@ -1,9 +1,10 @@
+import { useState } from "react";
 import {
   FaJsSquare,
   FaReact,
   FaNodeJs,
   FaGitAlt,
-  FaCode
+  FaCode,
 } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { SiTailwindcss } from "react-icons/si";
@@ -34,13 +35,13 @@ const AboutSection = () => (
     <h2 className="text-4xl font-bold text-purple-600 tracking-wide">
       About Me
     </h2>
-    <p className="text-gray-700 dark:text-gray-200 text-lg max-w-3xl mt-4 mx-auto">
+    <p className="text-gray-700 dark:text-gray-200 text-base md:text-lg max-w-3xl mt-4 mx-auto px-4">
       I'm a passionate React developer with expertise in modern web
       technologies. My strengths lie in JavaScript, building responsive
-      interfaces with React, styling with Tailwind CSS, and developing robust
-      backend solutions with Node.js. I prioritize clean, maintainable, and
-      efficient code.
+      interfaces with React, and styling with Tailwind CSS. I prioritize clean,
+      maintainable, and efficient code.
     </p>
+
     <div className="mt-6 flex item-center justify-center mx-auto">
       <button
         className="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg flex items-center gap-2 shadow-md hover:bg-purple-700 transition duration-300"
@@ -80,13 +81,45 @@ const TechnicalSkills = () => {
       icon: <FaCode className="text-6xl text-indigo-500" />,
     },
   ];
+  const [hovered, setHovered] = useState(null);
 
   return (
     <Section title="Technical Skills">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {skills.map((skill, index) => (
-          <Card key={index} title={skill.name} icon={skill.icon} />
-        ))}
+     
+      <div className="bg-gray-200 dark:bg-gray-900 rounded-lg py-10 text-center">
+        <h2 className="text-xl text-gray-600 dark:text-gray-300">
+          What Skills I Have
+        </h2>
+        <h1 className="text-3xl font-bold text-purple-600 dark:text-purple-400">
+          My Experience
+        </h1>
+        <div className="bg-gray-800 dark:bg-gray-700 text-white dark:text-gray-200 rounded-lg p-6 mt-6 w-3/4 mx-auto">
+          <h3 className="text-blue-400 dark:text-blue-500 text-xl">
+            Frontend Development
+          </h3>
+          <p className="text-gray-300">
+            Hover To Reveal Skills
+          </p>
+          <div className="flex justify-center gap-6 mt-4">
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className="relative flex flex-col items-center"
+                onMouseEnter={() => setHovered(index)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                <div className="p-4 bg-gray-700 dark:bg-gray-600 rounded-full">
+                  {skill.icon}
+                </div>
+                {hovered === index && (
+                  <span className="absolute mt-2 text-sm bg-gray-900 dark:bg-gray-800 text-white dark:text-gray-200 px-2 py-1 rounded-md">
+                    {skill.name}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Section>
   );
