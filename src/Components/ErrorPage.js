@@ -13,7 +13,7 @@ const ErrorPage = ({ error, errorInfo, onRetry }) => {
 
         <div className="bg-gray-50 p-4 rounded">
           <h3 className="font-semibold text-gray-800 mb-2">Error Details:</h3>
-          <pre className="text-sm text-gray-600 overflow-auto">
+          <pre className="text-sm text-gray-600 overflow-auto h-auto">
             {error?.toString()}
           </pre>
         </div>

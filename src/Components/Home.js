@@ -16,6 +16,11 @@ const Home = () => {
 
   return (
     <section className="min-h-screen py-24 dark:bg-gray-900 ">
+      <img
+        class="absolute left-0 top-[28rem] -z-[1] -translate-y-1/2"
+        src="https://themewagon.github.io/pinwheel/images/icons/feature-shape.svg"
+        alt=""
+      />
       <div className="text-center container mx-auto">
         <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight font-bold bg-gradient-to-r from-yellow-400 to-green-400 text-wrap text-transparent bg-clip-text whitespace-nowrap leading-snug md:leading-normal lg:leading-relaxed font-mono">
           Hi I'm Divyang Radadiya
@@ -40,6 +45,11 @@ const Home = () => {
           </NavLink>
         </div>
       </div>
+      <img
+        class="banner-shape absolute -top-28 right-0 -z-[1] w-full max-w-[30%]"
+        src="https://themewagon.github.io/pinwheel/images/banner-shape.svg"
+        alt=""
+      />
     </section>
   );
 };
