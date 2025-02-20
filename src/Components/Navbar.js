@@ -55,10 +55,10 @@ const Navbar = () => {
   const toggleDarkMode = useCallback(() => setIsDarkMode((prev) => !prev), []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-xl shadow-sm dark:shadow-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex justify-center items-center ">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 dark:bg-black/80 backdrop-blur-lg shadow-sm dark:shadow-slate-900 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex justify-between items-center h-14 md:h-16">
+          <div className="flex justify-center items-center">
             <NavLink
               to="/"
               className="text-xl font-bold text-purple-600 dark:text-purple-400 
@@ -94,7 +94,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute top-full left-0 right-0 bg-white/90 dark:bg-black/90 border-b transition-all duration-500 ease-in-out ${
+        className={`absolute top-full left-0 right-0 bg-white/95 dark:bg-black/95 border-b transition-all duration-300 ease-in-out ${
           isOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
         }`}
       >
